@@ -29,3 +29,42 @@ END$$
 DELIMITER ;
 
 call insertemployee('mahesh,kishan,yogi');
+
+DELIMITER $$
+
+CREATE PROCEDURE insertemployees(IN empnames TEXT)
+BEGIN
+    DECLARE name TEXT;
+    DECLARE remaining TEXT;
+    DECLARE comma_pos INT;
+
+    -- Initialize the remaining string to the input
+    SET remaining = empnames;
+
+    -- Start loop
+    WHILE LENGTH(remaining) > 0 DO
+        -- Find the position of the first comma
+        SET comma_pos = LOCATE(',', remaining);
+
+        IF comma_pos = 0 THEN
+            -- No more commas, take the rest as the last name
+            SET name = TRIM(remaining);
+            SET remaining = '';
+        ELSE
+            -- Extract name up to comma
+            SET name = TRIM(SUBSTRING(remaining, 1, comma_pos - 1));
+            SET remaining = SUBSTRING(remaining, comma_pos + 1);
+        END IF;
+
+        -- Insert the employee name
+        INSERT INTO sample (employeename) VALUES (name);
+
+        -- Set empid as 'EMP' + last inserted id
+        UPDATE sample 
+        SET empid = CONCAT('EMP', LAST_INSERT_ID())
+        WHERE id = LAST_INSERT_ID();
+    END WHILE;
+END$$
+
+DELIMITER ;
+drop procedure insertemployee;
