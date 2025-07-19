@@ -1,1 +1,0 @@
-poetry new 'foldername'
