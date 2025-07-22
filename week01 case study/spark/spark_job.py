@@ -1,7 +1,6 @@
-from pyspark.sql import SparkSession  # ✅ Corrected class name
-from pyspark.sql.functions import col  # ✅ Corrected import
+from pyspark.sql import SparkSession  
 from pyspark.sql.utils import AnalysisException
-from pyspark.sql.types import StructType, StructField, StringType, DateType, FloatType  # ✅ You need this for schema
+from pyspark.sql.types import StructType, StructField, StringType, DateType, FloatType  
 
 
 spark = SparkSession.builder\
@@ -10,8 +9,9 @@ spark = SparkSession.builder\
     .config("spark.sql.autoBroadcastJoinThreshold", 104857600)\
     .getOrCreate()
 
-csv_path = 'C:\Users\madhu.m\Desktop\DE-Training\DE-Training\week01 case study\spark\parking_events_large.csv'
-parquet_output_path = 'C:\Users\madhu.m\Desktop\DE-Training\DE-Training\week01 case study\spark\output.parquet'
+csv_path = 'C:\\Users\\madhu.m\\Desktop\\DE-Training\\DE-Training\\week01 case study\\spark\\parking_events_large.csv'
+
+parquet_output_path = "C:\\Users\\madhu.m\\Desktop\\DE-Training\\DE-Training\\week01 case study\\spark\\output.parquet"
 
 
 schema = StructType([
