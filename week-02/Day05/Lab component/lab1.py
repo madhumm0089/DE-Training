@@ -13,5 +13,6 @@ df_repart = df.repartition("product_id")
 
 aggregated_df = df_repart.groupBy("product_id").agg(sum("amount").alias("total_amount"))
 aggregated_df.show()
+aggregated_df.explain(True)
 
 input()

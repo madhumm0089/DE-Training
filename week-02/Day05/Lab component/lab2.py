@@ -24,3 +24,5 @@ aggregated_df.orderBy("user_id").show()
 
 end_time = time.time()
 print(f"Execution time:{end_time - start_time}")
+
+input()

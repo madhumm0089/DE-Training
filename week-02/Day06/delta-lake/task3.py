@@ -30,14 +30,14 @@ df_delta = spark.read.format("delta").load(delta_path)
 df_delta.createOrReplaceTempView("region_table")
 
 # Step 5: Query before optimization
-print("\n🔎 Query BEFORE optimization (region = 'us'):")
+print("\n Query BEFORE optimization (region = 'us'):")
 start_time = time.time()
 spark.sql("SELECT * FROM region_table WHERE region = 'us'").show()
 end_time = time.time()
-print(f"⏱️ Execution Time (before ZORDER): {round(end_time - start_time, 3)} seconds")
+print(f" Execution Time (before ZORDER): {round(end_time - start_time, 3)} seconds")
 
 # Step 6: Simulate ZORDER by sorting data by region
-print("\n⚙️ Simulating OPTIMIZE ZORDER BY region...")
+print("\nSimulating OPTIMIZE ZORDER BY region...")
 df_delta.orderBy("region").write.format("delta").mode("overwrite").save(delta_path)
 
 # Step 7: Reload and register again
@@ -45,10 +45,10 @@ df_delta = spark.read.format("delta").load(delta_path)
 df_delta.createOrReplaceTempView("region_table")
 
 # Step 8: Query after simulated optimization
-print("\n🔎 Query AFTER optimization (region = 'us'):")
+print("\n Query AFTER optimization (region = 'us'):")
 start_time = time.time()
 spark.sql("SELECT * FROM region_table WHERE region = 'us'").show()
 end_time = time.time()
-print(f"⏱️ Execution Time (after ZORDER): {round(end_time - start_time, 3)} seconds")
+print(f" Execution Time (after ZORDER): {round(end_time - start_time, 3)} seconds")
 
-print("\n✅ Task completed.")
+print("\nTask completed.")
