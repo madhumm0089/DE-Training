@@ -34,8 +34,13 @@ except Exception:
         .withColumn("IsCurrent", lit(True))
     
     scd2_df.write.format("delta").mode("overwrite").save(dim_customer_path)
-    existing_df = spark.read.format("delta").load(dim_customer_path)
+  
 
+new_source_df = spark.createDataFrame([
+     (2, "Bob", "San Francisco", "Silver"),
+    (3, "Charlie", "Los Angeles", "gold")], ["CustomerID", "Name", "Address", "LoyaltyTier"])
+
+existing_df = spark.read.format("delta").load(dim_customer_path)
 # Step 4: Join on CustomerID to compare
 joined_df = source_df.alias("src").join(
     existing_df.filter("IsCurrent = true").alias("tgt"),
@@ -48,6 +53,8 @@ changed_df = joined_df.filter(
     (col("src.Address") != col("tgt.Address")) |
     (col("src.LoyaltyTier") != col("tgt.LoyaltyTier"))
 ).select("src.*")
+
+changed_df.show()
 
 # Step 6: Expire existing rows
 expired_df = joined_df.filter(
