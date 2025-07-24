@@ -1,0 +1,35 @@
+Table customer{
+  customer_id int [pk]
+  name varchar
+  city varchar
+  email varchar 
+  Ph_no integer
+}
+
+Table Room{
+  room_id int [pk]
+  Room_no int 
+  room_type varchar
+  rent int
+  customer_id int  [ref: > customer.customer_id]
+}
+
+Table Booking{
+  booking_id int [pk]
+  customer_id int [ref: > customer.customer_id]
+  room_id int [ref: > Room.room_id]
+  total_amount int
+  check_in_date date
+  check_out_date date
+}
+
+Table payment{
+  payment_id int [pk]
+  transaction_no int
+  customer_id int [ref: > customer.customer_id]
+  total_amount_paid int 
+  payment_date date
+  payment_status varchar
+}
+
+

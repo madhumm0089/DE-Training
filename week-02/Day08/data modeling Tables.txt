@@ -1,0 +1,34 @@
+Table Student{
+  student_id int [pk]
+  firstname varchar(10)
+  lasttname varchar(10)
+  email varchar(100)
+  department varchar(10)
+}
+
+Table Instructor{
+  instructor_id int [pk]
+  name varchar
+  specilization varchar
+}
+
+Table Course{
+  course_id int [pk]
+  title varchar
+  credits int
+  instructor_id int [ref: > Instructor.instructor_id]
+}
+
+Table Enrollment{
+  enrollment_id int [pk]
+  student_id int [ref: > Student.student_id]
+  course_id int [ref: > Course.course_id]
+  enrollment_date date
+}
+
+Table Review{
+  student_id int [ref: > Student.student_id]
+  course_id int [ref: > Course.course_id]
+  rating int
+  comment varchar(100)
+}
