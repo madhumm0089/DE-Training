@@ -41,27 +41,24 @@ CREATE TABLE product_dim (
 -- DIMENSION: customer_dim (SCD Type 2 Ready)
 CREATE TABLE customer_dim (
     CustomerKey INT PRIMARY KEY AUTO_INCREMENT,   -- Surrogate Key
-    CustomerID INT NOT NULL,                      -- Business Key
+    CustomerID INT NOT NULL,                      
     Email VARCHAR(100),
     Name VARCHAR(100),
     City VARCHAR(100),
     LoyaltyStatus VARCHAR(50),
-    IsCurrent CHAR(1),                            -- 'Y' for current, 'N' for old
+    IsCurrent CHAR(1),                           
     StartDate DATE,
     EndDate DATE
-    -- NOTE: No UNIQUE constraint on CustomerID (multiple versions allowed)
+    
 );
 
--- Step 3: Create fact tables
-
--- FACT TABLE: fact_sales
 CREATE TABLE fact_sales (
     SalesID INT PRIMARY KEY,
     ProductID INT NOT NULL,
-    CustomerKey INT NOT NULL,       -- Reference surrogate key
+    CustomerKey INT NOT NULL,       
     StoreID INT NOT NULL,
     RegionID INT NOT NULL,
-    ReturnID INT,                   -- Nullable, only present if sale was returned
+    ReturnID INT,                   
     SalesDate DATE NOT NULL,
     UnitsSold INT NOT NULL,
     SalesAmount DECIMAL(10, 2) NOT NULL,
@@ -71,7 +68,6 @@ CREATE TABLE fact_sales (
     FOREIGN KEY (RegionID) REFERENCES region_dim(RegionID)
 );
 
--- FACT TABLE: fact_returns
 CREATE TABLE fact_returns (
     ReturnID INT PRIMARY KEY,
     SalesID INT NOT NULL,
