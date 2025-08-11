@@ -1,0 +1,134 @@
+=====Data vault====
+Tables:
+	Airport()
+	Boarding pass()
+	Flight()
+	Passenger()
+	Ticket()
+
+Hubs :
+
+CREATE TABLE HubPassenger (
+    PassengerHashKey VARCHAR(64) PRIMARY KEY,
+    PassengerID VARCHAR(50), -- e.g., passport or loyalty number
+    LoadDate TIMESTAMP,
+    RecordSource VARCHAR(100)
+);
+
+CREATE TABLE HubTicket (
+    TicketHashKey VARCHAR(64) PRIMARY KEY,
+    TicketNumber VARCHAR(50),
+    LoadDate TIMESTAMP,
+    RecordSource VARCHAR(100)
+);
+
+CREATE TABLE HubFlight (
+    FlightHashKey VARCHAR(64) PRIMARY KEY,
+    FlightNumber VARCHAR(20),
+    FlightDate DATE,
+    LoadDate TIMESTAMP,
+    RecordSource VARCHAR(100)
+);
+
+CREATE TABLE HubAirport (
+    AirportHashKey VARCHAR(64) PRIMARY KEY,
+    AirportCode VARCHAR(10), -- e.g., JFK, LHR
+    LoadDate TIMESTAMP,
+    RecordSource VARCHAR(100)
+);
+
+CREATE TABLE HubBoardingPass (
+    BoardingPassHashKey VARCHAR(64) PRIMARY KEY,
+    BoardingPassNumber VARCHAR(50),
+    LoadDate TIMESTAMP,
+    RecordSource VARCHAR(100)
+);
+
+
+links:
+
+
+CREATE TABLE LinkTicketPassenger (
+    LinkHashKey VARCHAR(64) PRIMARY KEY,
+    TicketHashKey VARCHAR(64),
+    PassengerHashKey VARCHAR(64),
+    LoadDate TIMESTAMP,
+    RecordSource VARCHAR(100)
+);
+
+CREATE TABLE LinkTicketFlight (
+    LinkHashKey VARCHAR(64) PRIMARY KEY,
+    TicketHashKey VARCHAR(64),
+    FlightHashKey VARCHAR(64),
+    LoadDate TIMESTAMP,
+    RecordSource VARCHAR(100)
+);
+
+CREATE TABLE LinkBoardingPassTicket (
+    LinkHashKey VARCHAR(64) PRIMARY KEY,
+    BoardingPassHashKey VARCHAR(64),
+    TicketHashKey VARCHAR(64),
+    LoadDate TIMESTAMP,
+    RecordSource VARCHAR(100)
+);
+
+CREATE TABLE LinkFlightAirport (
+    LinkHashKey VARCHAR(64) PRIMARY KEY,
+    FlightHashKey VARCHAR(64),
+    AirportHashKey VARCHAR(64),
+    AirportRole VARCHAR(10), 
+    LoadDate TIMESTAMP,
+    RecordSource VARCHAR(100)
+);
+
+satellites:
+
+CREATE TABLE SatPassengerDetails (
+    PassengerHashKey VARCHAR(64),
+    Name VARCHAR(100),
+    Email VARCHAR(100),
+    Nationality VARCHAR(50),
+    EffectiveDate TIMESTAMP,
+    LoadDate TIMESTAMP,
+    RecordSource VARCHAR(100)
+);
+
+CREATE TABLE SatTicketDetails (
+    TicketHashKey VARCHAR(64),
+    BookingClass VARCHAR(10),
+    Price DECIMAL(10, 2),
+    PurchaseDate DATE,
+    EffectiveDate TIMESTAMP,
+    LoadDate TIMESTAMP,
+    RecordSource VARCHAR(100)
+);
+
+CREATE TABLE SatFlightDetails (
+    FlightHashKey VARCHAR(64),
+    AirlineCode VARCHAR(10),
+    DepartureTime TIMESTAMP,
+    ArrivalTime TIMESTAMP,
+    EffectiveDate TIMESTAMP,
+    LoadDate TIMESTAMP,
+    RecordSource VARCHAR(100)
+);
+
+CREATE TABLE SatAirportDetails (
+    AirportHashKey VARCHAR(64),
+    AirportName VARCHAR(100),
+    Country VARCHAR(50),
+    Timezone VARCHAR(50),
+    EffectiveDate TIMESTAMP,
+    LoadDate TIMESTAMP,
+    RecordSource VARCHAR(100)
+);
+
+CREATE TABLE SatBoardingPassInfo (
+    BoardingPassHashKey VARCHAR(64),
+    SeatNumber VARCHAR(10),
+    Gate VARCHAR(10),
+    BoardingGroup VARCHAR(10),
+    EffectiveDate TIMESTAMP,
+    LoadDate TIMESTAMP,
+    RecordSource VARCHAR(100)
+);

@@ -1,0 +1,6 @@
+order_id,product,quantity,price_per_unit,order_date
+1001,Widget A,10,9.99,2025-07-01
+1002,Widget B,5,19.99,2025-07-01
+1003,Widget A,2,9.99,2025-07-02
+1004,Widget C,7,14.99,2025-07-03
+1005,Widget B,1,19.99,2025-07-04

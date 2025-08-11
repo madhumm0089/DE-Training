@@ -1,0 +1,35 @@
+2025-07-19 12:23:05,546 [INFO] Writing csv file to parquet: out.parquet
+2025-07-19 12:24:31,652 [INFO] Writing csv file to parquet: out.parquet
+2025-07-19 12:24:36,400 [INFO] Conversion completed
+2025-07-19 12:25:20,911 [INFO] Writing csv file to parquet: out.parquet
+2025-07-19 12:25:20,943 [INFO] Conversion completed
+2025-07-19 12:26:28,367 [INFO] Writing csv file to parquet: out.parquet
+2025-07-19 12:26:28,395 [INFO] Conversion completed
+2025-07-19 12:27:37,347 [INFO] Writing csv file to parquet: out.parquet
+2025-07-19 12:27:37,379 [INFO] Conversion completed
+2025-07-19 12:28:20,882 [INFO] Writing csv file to parquet: out.parquet
+2025-07-19 12:28:20,936 [INFO] Conversion completed
+2025-07-19 12:31:21,898 [INFO] Writing csv file to parquet: output.parquet
+2025-07-19 12:31:21,944 [INFO] Conversion completed
+2025-07-19 13:39:11,385 [INFO] validating entry and exit time
+2025-07-19 13:41:15,055 [INFO] validating entry and exit time
+2025-07-19 13:42:08,091 [INFO] validating entry and exit time
+2025-07-19 13:43:30,217 [INFO] validating entry and exit time
+2025-07-19 13:44:12,567 [INFO] validating entry and exit time
+2025-07-19 13:44:48,292 [INFO] Writing csv file to parquet: output.parquet
+2025-07-19 13:44:48,330 [INFO] Conversion completed
+2025-07-19 13:47:09,858 [INFO] Writing csv file to parquet: output.parquet
+2025-07-19 13:47:09,893 [INFO] Conversion completed
+2025-07-19 13:47:32,392 [INFO] validating entry and exit time
+2025-07-19 13:48:56,069 [INFO] validating entry and exit time
+2025-07-19 18:00:49,944 [INFO] Starting ETL process:
+2025-07-19 18:00:49,944 [INFO] validating entry and exit time
+2025-07-19 18:00:49,952 [ERROR] Validation failed: [Error] Invalid entry: entry_time is after exit_time.
+2025-07-19 18:01:09,181 [INFO] Starting ETL process:
+2025-07-19 18:01:09,181 [INFO] validating entry and exit time
+2025-07-19 18:01:09,194 [ERROR] Validation failed: [Error] Invalid entry: entry_time is after exit_time.
+2025-07-19 18:01:58,070 [INFO] Starting ETL process:
+2025-07-19 18:01:58,070 [INFO] Writing to parquet
+2025-07-19 18:01:58,070 [INFO] Writing csv file to parquet: output.parquet
+2025-07-19 18:01:58,111 [INFO] Conversion completed
+2025-07-19 18:01:58,111 [INFO] reading parquet file

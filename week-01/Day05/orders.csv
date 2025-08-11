@@ -1,0 +1,11 @@
+oreder_id,product_id,quantity,region
+101,1,10,North
+102,2,5,East
+103,3,2,West
+104,4,4,South
+105,1,6,North
+106,6,1,East
+107,7,12,West
+108,8,3,South
+109,5,5,North
+110,2,7,East

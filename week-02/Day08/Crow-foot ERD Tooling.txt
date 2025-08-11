@@ -1,0 +1,32 @@
+Table Book {
+  BookID int [pk, increment]
+  Title varchar
+  Author varchar
+  Publisher varchar
+  ISBN varchar
+}
+
+Table Member {
+  MemberID int [pk, increment]
+  Name varchar
+  Email varchar
+  Phone varchar
+  MembershipDate date
+}
+
+Table Librarian {
+  LibrarianID int [pk, increment]
+  Name varchar
+  Email varchar
+  Phone varchar
+  HireDate date
+}
+
+Table IssueRecord {
+  IssueID int [pk, increment]
+  BookID int [ref: > Book.BookID]
+  MemberID int [ref: > Member.MemberID]
+  LibrarianID int [ref: > Librarian.LibrarianID]
+  IssueDate date
+  ReturnDate date
+}
