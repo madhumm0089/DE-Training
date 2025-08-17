@@ -1,0 +1,3 @@
+[submodule "week-05/week05_case_study"]
+	path = week-05/week05_case_study
+	url = https://github.com/madhumm0089/week-05_case_study.git
